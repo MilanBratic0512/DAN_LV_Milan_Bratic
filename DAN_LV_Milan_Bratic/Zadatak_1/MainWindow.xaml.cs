@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zadatak_1.Model;
+using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
 {
@@ -20,9 +22,28 @@ namespace Zadatak_1
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel mwvm = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = mwvm;
+            
+        }
+
+        private void AddIngredients(object sender, RoutedEventArgs e)
+        {
+            PizzaIngredient ingredient = (sender as Button).DataContext as PizzaIngredient;
+            mwvm.AddIngredient(ingredient);
+            try
+            {
+                datagrid.Items.Refresh();
+                datagrid2.Items.Refresh();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            }
+
         }
     }
 }

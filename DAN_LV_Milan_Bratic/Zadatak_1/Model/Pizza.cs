@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Zadatak_1.Model
 {
-    class Pizza
+    public class Pizza
     {
         public List<PizzaIngredient> PizzaIngredients { get; set; }
-        public int Size { get; set; }
+        public Dictionary<string, int> Size { get; set; }
         public int TotalPrice { get; set; }
 
 

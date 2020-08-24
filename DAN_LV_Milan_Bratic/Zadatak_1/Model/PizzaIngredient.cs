@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadatak_1.Model
 {
-    class PizzaIngredient
+    public class PizzaIngredient
     {
         public string Name { get; set; }
         public int Price { get; set; }

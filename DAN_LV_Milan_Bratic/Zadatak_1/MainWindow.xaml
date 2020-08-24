@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding Pizza.PizzaIngredients}" AutoGenerateColumns="False" CanUserAddRows="False" Height="288" Width="772" Margin="10,87,10,44" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Pizza Ingredients" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Add Ingredients">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="AddIngredients" Content="Add"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="datagrid2" ItemsSource="{Binding AddedIngredients}" AutoGenerateColumns="False" CanUserAddRows="False" Width="772" Margin="10,286,10,44" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Pizza Ingredients" Binding="{Binding Name}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
