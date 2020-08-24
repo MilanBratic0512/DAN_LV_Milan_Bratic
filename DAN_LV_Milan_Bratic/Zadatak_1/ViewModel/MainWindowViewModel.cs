@@ -77,6 +77,10 @@ namespace Zadatak_1.ViewModel
             Pizza.Size.Add("medium", 400);
             Pizza.Size.Add("large", 700);
         }
+        public void CalculatePrice()
+        {
+            Pizza.TotalPrice += Pizza.Size.Select(x => x.Value).FirstOrDefault();
+        }
         
     }
 }

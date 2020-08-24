@@ -27,11 +27,13 @@ namespace Zadatak_1
         {
             InitializeComponent();
             DataContext = mwvm;
+            btnCalc.IsEnabled = false;
             
         }
 
         private void AddIngredients(object sender, RoutedEventArgs e)
         {
+            btnCalc.IsEnabled = true;
             PizzaIngredient ingredient = (sender as Button).DataContext as PizzaIngredient;
             mwvm.AddIngredient(ingredient);
             try
@@ -44,6 +46,23 @@ namespace Zadatak_1
                 MessageBox.Show("Error");
             }
 
+        }
+
+        private void Calculate(object sender, RoutedEventArgs e)
+        {
+            
+            mwvm.CalculatePrice();
+            MessageBox.Show("Total price: " + mwvm.Pizza.TotalPrice);
+            mwvm.AddedIngredients.Clear();
+            try
+            {
+                datagrid2.Items.Refresh();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            }
+           
         }
     }
 }
